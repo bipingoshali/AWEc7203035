@@ -291,7 +291,7 @@ $alert = new alert();
         </div> <!-- /.row -->
     </div> <!-- /.well -->
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function(){
             $('.pagination').pagination({
                 items: <?php echo $total_records;?>,

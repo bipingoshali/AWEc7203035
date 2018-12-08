@@ -2,15 +2,15 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Welcome</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/main-theme-css.css" rel="stylesheet" type="text/css">
     <link href="assets/css/simplePagination.css" rel="stylesheet" type="text/css">
-    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/js/jquery.simplePagination.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.min.js" ></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.simplePagination.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">

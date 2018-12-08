@@ -88,7 +88,7 @@ $session->normalPageSession();
                         <label>Password</label>
                         <input type="password" placeholder="Password" class="form-control" tabindex="7" name="password" id="password">
                     </div>
-                    <?php $image=rand(1,6); $_SESSION['recaptchaSession']=$image;echo '<img src="assets/images/'.$image.'.jpg" height="30" />'; ?>
+                    <?php $image=rand(1,6); $_SESSION['recaptchaSession']=$image;echo '<img src="assets/images/'.$image.'.jpg" height="30" alt="captcha" />'; ?>
                     <div class="form-group">
                         <label>Captcha</label>
                         <input type="text" placeholder="captcha" class="form-control" tabindex="9" name="recaptcha">
@@ -127,7 +127,7 @@ $session->normalPageSession();
             one number and one special character.</small><br>
     </div> <!-- /.well -->
 
-<script type="text/javascript">
+<script>
     $(document).ready(function () {
         $('#email').keyup(function () {
             var email = $(this).val();
