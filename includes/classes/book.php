@@ -145,9 +145,16 @@ class book{
         $this->book_genre = $book_genre;
     }
 
-    //select all books
+
+    //select all books with limitation
     public function selectBook($start_from,$limit){
         $selectBooksSQL = "Select * from book ORDER BY book_id ASC LIMIT $start_from, $limit";
+        return $this->connection->select($selectBooksSQL);
+    }
+
+    //select all books without limitation
+    public function selectBookNoLimitation(){
+        $selectBooksSQL = "Select * from book";
         return $this->connection->select($selectBooksSQL);
     }
 

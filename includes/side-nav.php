@@ -33,11 +33,14 @@
                             <a href="about-us.php" class="list-group-item"><span class="glyphicon glyphicon-object-align-bottom text-primary"></span> About Us</a>
                         </div>
                         <div class="list-group list-group-css">
-                            <a href="#demo" class="list-group-item" data-toggle="collapse"><span class="glyphicon glyphicon-user text-primary"></span>My Account</a>
+                            <a href="#demo" class="list-group-item" data-toggle="collapse"><span class="glyphicon glyphicon-user text-primary"></span> My Account</a>
                             <div id="demo" class="collapse">
                                 <a href="my-account.php" class="list-group-item"> Edit Profile</a>
                                 <a href="change_password.php" class="list-group-item"> Change Password</a>
                             </div>
+                        </div>
+                        <div class="list-group list-group-css">
+                            <a href="custom-search.php" class="list-group-item"><span class="glyphicon glyphicon-search text-primary"></span> Custom Search</a>
                         </div>
                         <div class="list-group list-group-css">
                             <a href="logout.php" class="list-group-item"><span class="glyphicon glyphicon-log-out text-primary"></span> Log Out</a>

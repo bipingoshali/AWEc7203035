@@ -30,6 +30,26 @@ $alert = new alert();
             if($_SESSION['user_id']=="admin"){
                 ?>
                     <h3>Admin Area</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>XML Data</th>
+                            <th>JSON Data</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a class="btn btn-primary" href="book-xml.php" target="_blank">View</a>
+                                    <a class="btn btn-primary" href="book-xml.php?download" target="_blank">Download</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" href="user-json.php" target="_blank">View</a>
+                                    <a class="btn btn-primary" href="user-json.php?download" target="_blank">Download</a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
                 <?php
 
             //end
