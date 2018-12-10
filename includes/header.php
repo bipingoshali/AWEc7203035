@@ -11,6 +11,9 @@ session_start();
     <script src="assets/js/jquery.min.js" ></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.simplePagination.js"></script>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <script src="assets/js/jquery-ui.js"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">

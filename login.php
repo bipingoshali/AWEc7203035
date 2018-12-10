@@ -36,6 +36,7 @@ $session->normalPageSession();
             </div>
             <div class="form-group">
                 <button class="btn btn-success" name="login_btn" type="submit"><span class="glyphicon glyphicon-log-in"></span>    Log in</button>
+<!--                <a href="--><?//= 'https://accounts.google.com/o/oauth2/v2/auth?scope=' . urlencode('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me') . '&redirect_uri=' . urlencode(CLIENT_REDIRECT_URL) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online' ?><!--">Login with Google</a>-->
             </div>
         </form>
     </div> <!-- /.well -->

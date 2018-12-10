@@ -51,7 +51,15 @@ $session->userPageSession();
             <span id="password_message"></span>
         </div>
         <div class="form-group">
-            <button class="btn btn-success" type="submit" name="change_password_btn" id="change_password_btn"><span class="glyphicon glyphicon-send"></span>    Change</button>
+        <?php
+        if($_SESSION['register_type']=='normal'){
+            echo '<button class="btn btn-success" type="submit" name="change_password_btn" id="change_password_btn"><span class="glyphicon glyphicon-send"></span>    Change</button>';
+        }else{
+            echo '<span class="label label-danger">Your account is registered with your gmail account. You cannot change password here!</span>';
+            echo '<button class="btn btn-success" disabled="disabled" type="submit" name="change_password_btn" id="change_password_btn"><span class="glyphicon glyphicon-send"></span>    Change</button>';
+        }
+        ?>
+
         </div>
     </form>
 
@@ -78,15 +86,20 @@ $session->userPageSession();
         $("#confirm_password").keyup(function(){
             var password = $("#new_password").val();
             var confirm_password = $(this).val();
-            if(password===confirm_password){
-                $(this).css("border-color", "green");
-                $("#change_password_btn").removeAttr("disabled");
-                $('#password_message').html("");
+            if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test($(this).val()) && $(this).val().trim()!==""){
+                if(password===confirm_password){
+                    $(this).css("border-color", "green");
+                    $("#change_password_btn").removeAttr("disabled");
+                    $('#password_message').html("");
+                }else{
+                    $(this).css("border-color", "red");
+                    $('#password_message').attr('class','label label-danger');
+                    $("#change_password_btn").attr("disabled","disabled");
+                    $('#password_message').html("Password does not match.");
+                }
             }else{
                 $(this).css("border-color", "red");
-                $('#password_message').attr('class','label label-danger');
                 $("#change_password_btn").attr("disabled","disabled");
-                $('#password_message').html("Password does not match.");
             }
         });
     });

@@ -203,8 +203,8 @@ class user{
                 if($this->connection->checkRows($checkEmailSQL)>0){
                     $this->alert->alert_danger('Sorry email already exists. Please try again!');
                 }else{
-                    $registerUserSQL = "insert into user(user_name,email,address_line_1,address_line_2,gender,date_of_birth,password)
-                            values('$user_name','$email','$address_line_1','$address_line_2','$gender','$date_of_birth','$password')
+                    $registerUserSQL = "insert into user(user_name,email,address_line_1,address_line_2,gender,date_of_birth,password,register_type)
+                            values('$user_name','$email','$address_line_1','$address_line_2','$gender','$date_of_birth','$password','normal');
                             ";
 
                     $this->connection->CUD($registerUserSQL);
@@ -253,20 +253,54 @@ class user{
                     $user_data = $this->connection->select($checkEmailSQL);
                     foreach ($user_data as $userDataRow){
                         $fetchUserPassword = $userDataRow["password"];
+                        $fetchUserRegisterType = $userDataRow["register_type"];
 
-                        //checking password
-                        if($password==$fetchUserPassword){
-                            $_SESSION['user_id']=$userDataRow["user_id"];
-                            $_SESSION['user_name']=$userDataRow["user_name"];
-                            echo "<script type='text/javascript'>  window.location='index.php'; </script>";
+                        if($fetchUserRegisterType=='gmail'){
+                            $this->alert->alert_danger("Sorry! Your account is registered with your gmail account. Please login with gmail.");
                         }else{
-                            $this->alert->alert_danger("Password does not match. Please try again!");
+                            //checking password
+                            if($password==$fetchUserPassword){
+                                $_SESSION['user_id']=$userDataRow["user_id"];
+                                $_SESSION['user_name']=$userDataRow["user_name"];
+                                $_SESSION['register_type']=$userDataRow["register_type"];
+                                echo "<script type='text/javascript'>  window.location='index.php'; </script>";
+                            }else{
+                                $this->alert->alert_danger("Password does not match. Please try again!");
+                            }
                         }
                     }
                 }
             }
         }
     }
+
+    //login with gmail
+    public function loginOAuth($email,$name){
+        $checkEmailSQL = "select * from user where email='$email'";
+
+        //checking whether the email already exists or not
+        if($this->connection->checkRows($checkEmailSQL)>0){
+            $user_data = $this->connection->select($checkEmailSQL);
+            foreach ($user_data as $userDataRow){
+                $_SESSION['user_id']=$userDataRow["user_id"];
+                $_SESSION['user_name']=$userDataRow["user_name"];
+                $_SESSION['register_type']=$userDataRow["register_type"];
+            }
+            echo "<script type='text/javascript'>  window.location='index.php'; </script>";
+        }else{
+            $registerUserSQL = "insert into user(user_name,email,register_type)
+                values('$name','$email','gmail')";
+            $this->connection->CUD($registerUserSQL);
+            $user_data = $this->connection->select($checkEmailSQL);
+            foreach ($user_data as $userDataRow){
+                $_SESSION['user_id']=$userDataRow["user_id"];
+                $_SESSION['user_name']=$userDataRow["user_name"];
+                $_SESSION['register_type']=$userDataRow["register_type"];
+            }
+            echo "<script type='text/javascript'>  window.location='index.php'; </script>";
+        }
+    }
+
 
     //select user by id
     public function selectUserById($user_id){

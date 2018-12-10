@@ -43,7 +43,9 @@ $session->normalPageSession();
                         $user->setAddressLine1($_POST['address_line_1']);
                         $user->setAddressLine2($_POST['address_line_2']);
                         $user->setGender($_POST['gender']);
-                        $user->setDateOfBirth($_POST['date_of_birth']);
+                        $datePicker=strtotime($_POST['date_of_birth']);
+                        $datePicker=date("Y-m-d",$datePicker);
+                        $user->setDateOfBirth($datePicker);
                         $user->setPassword($_POST['password']);
                         $user->setConfirmPassword($_POST['confirm_password']);
 
@@ -107,7 +109,7 @@ $session->normalPageSession();
                     </div>
                     <div class="form-group">
                         <label>Date of Birth</label>
-                        <input type="date" class="form-control" tabindex="6" name="date_of_birth">
+                        <input type="text" id="datepicker" class="form-control" tabindex="6" name="date_of_birth" placeholder="Date of birth">
                     </div>
                     <div class="form-group">
                         <label>Confirm Password</label>
@@ -129,6 +131,11 @@ $session->normalPageSession();
 
 <script>
     $(document).ready(function () {
+
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+
         $('#email').keyup(function () {
             var email = $(this).val();
             $.post("email_availability.php",{email:email},function (data) {
@@ -156,15 +163,20 @@ $session->normalPageSession();
         $("#confirm_password").keyup(function(){
             var password = $("#password").val();
             var confirm_password = $(this).val();
-            if(password===confirm_password){
-                $(this).css("border-color", "green");
-                $("#register_submit_btn").removeAttr("disabled");
-                $('#password_message').html("");
+            if(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test($(this).val()) && $(this).val().trim()!==""){
+                if(password===confirm_password){
+                    $(this).css("border-color", "green");
+                    $("#register_submit_btn").removeAttr("disabled");
+                    $('#password_message').html("");
+                }else{
+                    $(this).css("border-color", "red");
+                    $('#password_message').attr('class','label label-danger');
+                    $("#register_submit_btn").attr("disabled","disabled");
+                    $('#password_message').html("Password does not match.");
+                }
             }else{
                 $(this).css("border-color", "red");
-                $('#password_message').attr('class','label label-danger');
                 $("#register_submit_btn").attr("disabled","disabled");
-                $('#password_message').html("Password does not match.");
             }
         });
     });

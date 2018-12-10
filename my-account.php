@@ -45,6 +45,12 @@ $fetchUserDetails = $user->selectUserById($_SESSION['user_id']);
 
         <h1>My Account</h1>
         <h3>Edit Profile</h3>
+        <?php
+        if($_SESSION['register_type']=='gmail'){
+            echo '<h5><span class="label label-warning">Please fill up your details</span></h5>';
+        }
+        ?>
+
         <hr>
         <form method="post">
             <div class="row">

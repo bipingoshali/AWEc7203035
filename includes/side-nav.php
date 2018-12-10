@@ -43,6 +43,9 @@
                             <a href="custom-search.php" class="list-group-item"><span class="glyphicon glyphicon-search text-primary"></span> Custom Search</a>
                         </div>
                         <div class="list-group list-group-css">
+                            <a href="rss.php" class="list-group-item"><span class="glyphicon glyphicon-th-list text-primary"></span> RSS News Feed</a>
+                        </div>
+                        <div class="list-group list-group-css">
                             <a href="logout.php" class="list-group-item"><span class="glyphicon glyphicon-log-out text-primary"></span> Log Out</a>
                         </div>
                     ';
