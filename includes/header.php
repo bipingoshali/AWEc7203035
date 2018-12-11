@@ -12,6 +12,7 @@ session_start();
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.simplePagination.js"></script>
     <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/jquery-ui.js"></script>
 
 </head>

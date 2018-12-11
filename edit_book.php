@@ -58,7 +58,7 @@ $session->adminPageSession();
                     </div>
                     <div class="form-group">
                         <label>ISBN</label>
-                        <input class="form-control" name="ISBN" type="text" value="<?php echo $fetchBookDetails[0]['ISBN']?>">
+                        <input class="form-control" name="ISBN" type="text" value="<?php echo $fetchBookDetails[0]['ISBN']?>" readonly="readonly">
                     </div>
                     <div class="form-group">
                         <label>Publisher</label>

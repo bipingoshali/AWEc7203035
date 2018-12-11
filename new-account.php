@@ -43,9 +43,7 @@ $session->normalPageSession();
                         $user->setAddressLine1($_POST['address_line_1']);
                         $user->setAddressLine2($_POST['address_line_2']);
                         $user->setGender($_POST['gender']);
-                        $datePicker=strtotime($_POST['date_of_birth']);
-                        $datePicker=date("Y-m-d",$datePicker);
-                        $user->setDateOfBirth($datePicker);
+                        $user->setDateOfBirth($_POST['date_of_birth']);
                         $user->setPassword($_POST['password']);
                         $user->setConfirmPassword($_POST['confirm_password']);
 
@@ -109,7 +107,7 @@ $session->normalPageSession();
                     </div>
                     <div class="form-group">
                         <label>Date of Birth</label>
-                        <input type="text" id="datepicker" class="form-control" tabindex="6" name="date_of_birth" placeholder="Date of birth">
+                        <input type="date" class="form-control" tabindex="6" name="date_of_birth">
                     </div>
                     <div class="form-group">
                         <label>Confirm Password</label>
@@ -132,9 +130,6 @@ $session->normalPageSession();
 <script>
     $(document).ready(function () {
 
-        $( function() {
-            $( "#datepicker" ).datepicker();
-        } );
 
         $('#email').keyup(function () {
             var email = $(this).val();

@@ -22,6 +22,7 @@ if(isset($_POST['query'])){
                             <th>Address</th>
                             <th>Gender</th>
                             <th>Date of Birth</th>
+                            <th>Register Type</th>
 						</tr>
         ';
         foreach ($data as $row){
@@ -34,6 +35,7 @@ if(isset($_POST['query'])){
 				<td>'.$row["address_line_2"].', '.$row["address_line_1"].'</td>
 				<td>'.$row["gender"].'</td>
 				<td>'.$row["date_of_birth"].'</td>
+				<td>'.$row["register_type"].'</td>
 			</tr>
         ';
         }
@@ -62,6 +64,7 @@ else{
                             <th>Address</th>
                             <th>Gender</th>
                             <th>Date of Birth</th>
+                            <th>Register Type</th>
 						</tr>
         ';
         foreach ($data as $row){
@@ -74,6 +77,7 @@ else{
 				<td>'.$row["address_line_2"].', '.$row["address_line_1"].'</td>
 				<td>'.$row["gender"].'</td>
 				<td>'.$row["date_of_birth"].'</td>			    
+				<td>'.$row["register_type"].'</td>
 			</tr>
         ';
         }

@@ -282,11 +282,15 @@ class user{
         if($this->connection->checkRows($checkEmailSQL)>0){
             $user_data = $this->connection->select($checkEmailSQL);
             foreach ($user_data as $userDataRow){
-                $_SESSION['user_id']=$userDataRow["user_id"];
-                $_SESSION['user_name']=$userDataRow["user_name"];
-                $_SESSION['register_type']=$userDataRow["register_type"];
+                if($userDataRow["register_type"]=="normal"){
+                    echo "<script type='text/javascript'>  window.location='login.php?gmailloginfail'; </script>";
+                }else{
+                    $_SESSION['user_id']=$userDataRow["user_id"];
+                    $_SESSION['user_name']=$userDataRow["user_name"];
+                    $_SESSION['register_type']=$userDataRow["register_type"];
+                    echo "<script type='text/javascript'>  window.location='index.php'; </script>";
+                }
             }
-            echo "<script type='text/javascript'>  window.location='index.php'; </script>";
         }else{
             $registerUserSQL = "insert into user(user_name,email,register_type)
                 values('$name','$email','gmail')";
@@ -350,6 +354,7 @@ class user{
                     OR address_line_2 like '%".$search."%'
                     OR date_of_birth like '%".$search."%'
                     OR gender like '%".$search."%'
+                    OR register_type like '%".$search."%'
                 ";
         return $this->connection->select($searchUserSQL);
     }

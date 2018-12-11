@@ -4,7 +4,7 @@ if(isset($_GET['download'])){
     header('Content-disposition: attachment; filename=user.json');
 }
 
-$con=mysqli_connect("localhost","root","","awec7203035");
+$con=mysqli_connect("localhost","id8061625_bipin","id8061625_bipin","id8061625_bipin");
 
 // Check connection
 if (mysqli_connect_errno())

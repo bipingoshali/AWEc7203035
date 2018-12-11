@@ -55,8 +55,8 @@ $session->userPageSession();
         if($_SESSION['register_type']=='normal'){
             echo '<button class="btn btn-success" type="submit" name="change_password_btn" id="change_password_btn"><span class="glyphicon glyphicon-send"></span>    Change</button>';
         }else{
-            echo '<span class="label label-danger">Your account is registered with your gmail account. You cannot change password here!</span>';
-            echo '<button class="btn btn-success" disabled="disabled" type="submit" name="change_password_btn" id="change_password_btn"><span class="glyphicon glyphicon-send"></span>    Change</button>';
+            echo '<span class="label label-danger">Your account is registered with your gmail account. You cannot change password here!</span><br>';
+            echo '<button style="margin-top:10px;" class="btn btn-success" disabled="disabled" type="submit" name="change_password_btn" id="change_password_btn"><span class="glyphicon glyphicon-send"></span>    Change</button>';
         }
         ?>
 
